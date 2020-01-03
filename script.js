@@ -1,4 +1,4 @@
-var gridRes = 16;
+var gridRes = 64;
 var grid = document.getElementById("divBox");
 var row, box;
 // creates box on load
@@ -37,11 +37,13 @@ function makeRow(gridRes){
   }
 }
 function setSize(){
-  let n = prompt("Enter new grid dimension:", "16");
-  //if input is blank set to 16  
-  if(!n){ n = 16;}
+  let n = prompt("Enter new grid dimension:", "32");
+  //check for valid input
+  if(!n || isNaN(n) ){ n = 32;} //reset to 32 if invalid
   n = Number(n);
+  //delete old grid
   reset();
+  // make new grid with inputted value
   gridRes = n;
   for(n; n > 0; n--){
     makeRow(gridRes);
